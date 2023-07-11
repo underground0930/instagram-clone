@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Capybara.default_max_wait_time = 5
 Capybara.server = :puma, { Silent: true }
 
@@ -27,7 +29,7 @@ else
     Capybara::Selenium::Driver.new(
       app,
       browser: :chrome,
-      timeout: ENV.fetch('CAPYBARA_TIMEOUT') { 10 },
+      timeout: ENV.fetch('CAPYBARA_TIMEOUT', 10),
       options:
     )
   end
