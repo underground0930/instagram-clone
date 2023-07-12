@@ -1,0 +1,39 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+# This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+Rails:
+  Enabled: true
+
+Metrics/AbcSize:
+  Max: 25
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
