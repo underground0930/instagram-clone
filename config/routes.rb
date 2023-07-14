@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/login", to: "user_sessions#create"
   delete "/logout", to: "user_sessions#destroy"
 
-  resources :users, only: [:new, :create]
+  get "/signup", to: "users#new"
+  post "/signup", to: "users#create"
 
 end
