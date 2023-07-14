@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]  
+
   def new; end
 
   def create
@@ -9,7 +11,6 @@ class UserSessionsController < ApplicationController
       flash.now[:danger] = "ログインに失敗しました"
       render :new, status: :unprocessable_entity
     end
-    
   end
 
   def destroy
