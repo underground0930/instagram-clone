@@ -26,6 +26,22 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
+    it "これらのメールアドレスは有効なフォーマット" do
+      valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
+      valid_addresses.each do |valid_address|
+        user.email = valid_address
+        expect(user).to be_valid, "#{valid_address.inspect} がエラーです"
+      end
+    end
+  
+    it "これらのメールアドレスは無効なフォーマット" do
+      invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
+      invalid_addresses.each do |invalid_address|
+        user.email = invalid_address
+        expect(user).to_not be_valid, "#{invalid_address.inspect} がエラーです"
+      end
+    end
+
     it "usernameは重複を禁止なのでinvalidになること" do
       user.save()
       dup_user = user.dup
@@ -45,6 +61,11 @@ RSpec.describe User, type: :model do
 
     it "passwordは最小3文字以上のこと" do
       user.password = user.password_confirmation = "a" * 2
+      expect(user).to_not be_valid
+    end
+
+    it "passwordは最大20文字までのこと" do
+      user.password = user.password_confirmation = "a" * 21
       expect(user).to_not be_valid
     end
 
