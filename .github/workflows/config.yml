@@ -17,7 +17,7 @@ jobs:
     env:
       RAILS_ENV: test
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install chrome
         run: |
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -28,7 +28,7 @@ jobs:
         run: bundle config set path 'vendor/bundle'
       - name: cache gems
         id: cache-gems
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -56,12 +56,12 @@ jobs:
     container:
       image: ruby:3.1.1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: bundler config
         run: bundle config set path 'vendor/bundle'
       - name: Cache gems
         id: cache-gems
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -77,12 +77,12 @@ jobs:
     container:
       image: ruby:3.1.1
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: bundler config
         run: bundle config set path 'vendor/bundle'
       - name: Cache gems
         id: cache-gems
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
