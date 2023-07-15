@@ -1,29 +1,29 @@
 <div id="signup" class="signup">
-  <%= render "shared/error_messages", object: @user %>
+  <%= render 'shared/error_messages', object: @user %>
   <h1 class="signup__title">新規登録</h1>
     <div class="signup__inner">
     <%= form_with model: @user, url: signup_path do |f| %>
        <div class="form-outline">
-        <%= f.text_field :username , class:"form-control" %>
-        <%= f.label :username, "username", class: "form-label" %>
+        <%= f.text_field :username, class: 'form-control' %>
+        <%= f.label :username, 'username', class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
-        <%= f.text_field :email , class:"form-control" %>
-        <%= f.label :email, "email", class: "form-label" %>
+        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.label :email, 'email', class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
-        <%= f.password_field :password , class:"form-control" %>
-        <%= f.label :password, "password", class: "form-label" %>
+        <%= f.password_field :password, class: 'form-control' %>
+        <%= f.label :password, 'password', class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
-        <%= f.password_field :password_confirmation , class:"form-control" %>
-        <%= f.label :password_confirmation, "password confirm", class: "form-label" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <%= f.label :password_confirmation, 'password confirm', class: 'form-label' %>
       </div>
       <br>
-      <%= f.submit "新規登録", class: "btn btn-primary btn-block" %>
+      <%= f.submit '新規登録', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
 </div>

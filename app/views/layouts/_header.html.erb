@@ -13,20 +13,20 @@
             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
               id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
               <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="22" alt="Avatar"
-                loading="lazy" />
+                loading="lazy">
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">My profile</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><%= link_to "Logout", :logout, class: "dropdown-item", data: { turbo_method: :delete, turbo_confirm: "ログアウトしていいですか？" } %></li>
+              <li><%= link_to 'Logout', :logout, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: 'ログアウトしていいですか？' } %></li>
             </ul>
           </li>
         <% else %>
           <li class="nav-item dropdown">
-            <%= link_to "Login", :login, class: "nav-link" %>
+            <%= link_to 'Login', :login, class: 'nav-link' %>
           </li>
           <li class="nav-item dropdown">
-            <%= link_to "SignUp", :signup, class: "nav-link" %>
+            <%= link_to 'SignUp', :signup, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
