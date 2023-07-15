@@ -4,12 +4,12 @@
     <%= form_with url: login_path do |f| %>
       <div class="form-outline">
         <%= f.text_field :email, class: 'form-control' %>
-        <%= f.label :email, 'email', class: 'form-label' %>
+        <%= f.label :email, User.human_attribute_name(:email), class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
         <%= f.password_field :password, class: 'form-control' %>
-        <%= f.label :password, 'password', class: 'form-label' %>
+        <%= f.label :password, User.human_attribute_name(:password), class: 'form-label' %>
       </div>
       <br>
       <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>

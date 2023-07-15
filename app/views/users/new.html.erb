@@ -5,22 +5,22 @@
     <%= form_with model: @user, url: signup_path do |f| %>
        <div class="form-outline">
         <%= f.text_field :username, class: 'form-control' %>
-        <%= f.label :username, 'username', class: 'form-label' %>
+        <%= f.label :username, User.human_attribute_name(:username), class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
         <%= f.text_field :email, class: 'form-control' %>
-        <%= f.label :email, 'email', class: 'form-label' %>
+        <%= f.label :email, User.human_attribute_name(:email), class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
         <%= f.password_field :password, class: 'form-control' %>
-        <%= f.label :password, 'password', class: 'form-label' %>
+        <%= f.label :password, User.human_attribute_name(:password), class: 'form-label' %>
       </div>
       <br>
       <div class="form-outline">
         <%= f.password_field :password_confirmation, class: 'form-control' %>
-        <%= f.label :password_confirmation, 'password confirm', class: 'form-label' %>
+        <%= f.label :password_confirmation, User.human_attribute_name(:password_confirmation), class: 'form-label' %>
       </div>
       <br>
       <%= f.submit '新規登録', class: 'btn btn-primary btn-block' %>
