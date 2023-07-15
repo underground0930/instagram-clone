@@ -1,0 +1,14 @@
+ja:
+  controllers:
+    application:
+      not_authenticated:
+        alert: "ログインしてください"
+    users:
+      create:
+        success: 'ユーザー登録が完了しました'
+    user_sessions:
+      create:
+        success: "ログインに成功しました!"
+        danger: "ログインに失敗しました!"
+      destroy:
+        success: "ログアウトしました!"
