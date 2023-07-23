@@ -12,6 +12,11 @@
         <%= f.label :password, User.human_attribute_name(:password), class: 'form-label' %>
       </div>
       <br>
+      <div class="form-outline">
+        <%= f.check_box :remember_check, class: '' %>
+        <%= f.label :remember_check, "remember me", class: 'form-label' %>
+      </div>
+      <br>
       <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
