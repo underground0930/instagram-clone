@@ -325,7 +325,7 @@ Rails.application.config.sorcery.configure do |config|
     # logins/logouts (to support remembering on multiple browsers simultaneously).
     # Default: false
     #
-    # user.remember_me_token_persist_globally =
+    user.remember_me_token_persist_globally = true
 
     # -- user_activation --
     # The attribute name to hold activation state (active/pending).

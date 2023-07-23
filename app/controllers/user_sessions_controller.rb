@@ -18,7 +18,4 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to('/', success: t('controllers.user_sessions.destroy.success'), status: :see_other)
   end
-
-
-
 end
