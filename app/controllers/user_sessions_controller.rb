@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :guest_user_only, only: %i[new create]
 
   def new; end
 
@@ -17,4 +18,7 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to('/', success: t('controllers.user_sessions.destroy.success'), status: :see_other)
   end
+
+
+
 end
