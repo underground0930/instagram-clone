@@ -25,6 +25,18 @@ module InstaCloneVer7
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # アプリケーション全体のデフォルトタイムゾーンを東京に設定します。
+    config.time_zone = 'Tokyo'
+    # ActiveRecordがデータベースとやり取りする際の時間データのタイムゾーンを設定します。
+    # :localと設定すると、config.time_zoneで設定したローカルのタイムゾーン（ここでは東京）が使われます
+    config.active_record.default_timezone = :local
+
+    config.generators do |g|
+      g.helper false
+    end
+
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -35,5 +47,7 @@ module InstaCloneVer7
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.i18n.default_locale = :ja
   end
 end

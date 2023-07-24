@@ -1,0 +1,16 @@
+
+.signup{
+  padding: 0 0 50px;
+}
+
+.signup__inner{
+  margin: 0 auto 0;
+  max-width: 500px;
+}
+
+.signup__title{
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin: 40px 0 40px;
+}

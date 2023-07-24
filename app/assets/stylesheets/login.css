@@ -1,0 +1,16 @@
+
+.login{
+  padding: 0 0 50px;
+}
+
+.login__inner{
+  margin: 0 auto 0;
+  max-width: 500px;
+}
+
+.login__title{
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  margin: 40px 0 40px;
+}
