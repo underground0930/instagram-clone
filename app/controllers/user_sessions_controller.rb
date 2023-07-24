@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def new; end
 
   def create
-    @user = login(params[:email], params[:password], params[:remember_check] == "1" ? true : false)
+    @user = login(params[:email], params[:password], params[:remember_check] == '1')
     if @user
       redirect_back_or_to('/', success: t('controllers.user_sessions.create.success'))
     else
