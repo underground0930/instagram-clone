@@ -5,7 +5,7 @@
 
 Rails.application.routes.draw do
   get '/health_check', to: 'health_checks#show'
-  root 'samples#index'
+  root 'posts#index'
 
   get "/login", to: "user_sessions#new"
   post "/login", to: "user_sessions#create"
@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   get "/signup", to: "users#new"
   post "/signup", to: "users#create"
+
+  resources :posts
 
 end

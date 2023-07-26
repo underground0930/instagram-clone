@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe "Signup", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
 
   describe "新規登録" do
 
@@ -17,9 +14,10 @@ RSpec.describe "Signup", type: :system do
       fill_in name: "user[password]", with: user_attributes[:password]
       fill_in name: "user[password_confirmation]", with: user_attributes[:password_confirmation]
       click_button "新規登録"
-
-      expect(page).to have_current_path(root_path)
-      expect(page).to have_content "ユーザー登録が完了しました"
+      aggregate_failures do
+        expect(page).to have_current_path(root_path)
+        expect(page).to have_content "ユーザー登録が完了しました"
+      end
     end
 
     it "登録失敗" do

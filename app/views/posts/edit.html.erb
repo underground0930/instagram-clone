@@ -1,0 +1,32 @@
+<div id="posts" class="posts">
+  <%= render 'shared/error_messages', object: @post %>
+  <h1 class="signup__title">投稿編集</h1>
+  <div class="container">
+    <div style="max-width:600px; margin: 0 auto;">
+      <%= form_with model: @post, url: post_path(@post) do |f| %>
+        <div class="form-outline">
+          <%= f.text_area :body, class: 'form-control' %>
+          <%= f.label :body, User.human_attribute_name(:body), class: 'form-label' %>
+        </div>
+        <br>
+        <div class="d-flex row">
+          <% @post.images.each do |image| %>
+            <div class="col col-3">
+              <%= image_tag image, class: 'w-100' %>
+            </div>
+          <% end %>
+        </div>
+        <br>
+        <div>
+          <%= f.label :images, User.human_attribute_name(:images), class: 'form-label' %>
+          <%= f.file_field :images, class: 'form-control', include_hidden: false, multiple: true, accept: 'image/*' %>
+        </div>
+        <br>
+        <%= f.submit '投稿を更新', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+    <div class="text-center my-5">
+      <%= link_to 'Back To Posts', posts_path, { role: 'button', class: 'btn text-white', style: 'background-color: #55acee;' } %>
+    </div>
+  </div>
+</div>

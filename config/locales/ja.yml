@@ -1,13 +1,22 @@
 ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
   activerecord:
     models:
       user: ユーザー
+      post: 投稿
     attributes:
       user:
         username: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+        created_at: 登録日時
+        updated_at: 更新日時
+      post:
+        body: 本文
+        images: 写真
         created_at: 登録日時
         updated_at: 更新日時
   controllers:
@@ -23,3 +32,11 @@ ja:
         danger: "ログインに失敗しました!"
       destroy:
         success: "ログアウトしました!"
+    post:
+      create:
+        success: "投稿を作成しました"
+      update:
+        success: "投稿を更新しました"
+      destroy:
+        success: "投稿を削除しました"
+        danger: "投稿の削除に失敗しました"
