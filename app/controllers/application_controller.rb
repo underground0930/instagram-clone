@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+  
   before_action :require_login, except: [:not_authenticated]
   add_flash_types :primary, :success, :waring, :danger
 
