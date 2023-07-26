@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :system do
+
   describe "投稿機能" do
     context "ログイン状態" do
       let!(:user) { FactoryBot.create(:user) }
@@ -64,4 +65,21 @@ RSpec.describe "Posts", type: :system do
 
     end
   end
+
+  describe "ページネーション" do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:post) { FactoryBot.create(:post, user:user, created_at: Time.current.yesterday)}
+    before do
+      FactoryBot.create_list(:post, 15, user:user)
+    end
+
+    it "16件目は2ページ目に表示されること" do
+      visit posts_path
+      expect(page).to_not have_css("#carouselExampleIndicators_post_#{post.id}")
+      visit posts_path(page: "2")
+      expect(page).to have_css("#carouselExampleIndicators_post_#{post.id}")
+    end
+
+  end
+
 end
