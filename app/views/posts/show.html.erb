@@ -1,0 +1,37 @@
+<div id="posts" class="posts">
+  <div class="container">
+    <div class="row">
+      <div class="col col-8">
+        <div class="border rounded">
+          <div class="p-3">
+            <%= render partial: 'carousel', locals: { post: @post } %>
+          </div>
+          <hr class="hr">
+          <div class="p-3">
+            <%= @post.body %>
+          </div>
+          <hr class="hr">
+          <div class="p-3">
+            <p><%= l @post.created_at %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col col-4">
+          <p><%= @post.user.username %></p>
+          <hr class="hr">
+          <% if current_user&.owner?(@post) %>
+            <p><%= link_to 'edit', edit_post_path(@post), { role: 'button', class: 'btn btn-info' } %></p>
+            <p><%= link_to 'delete', post_path(@post), {
+                     role: 'button',
+                     class: 'btn btn-danger',
+                     data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
+                   } %>
+            </p>
+          <% end %>
+      </div>
+    </div>
+    <div class="text-center my-5">
+      <%= link_to 'Back To Posts', posts_path, { role: 'button', class: 'btn text-white', style: 'background-color: #55acee;' } %>
+    </div>
+  </div>
+</div>

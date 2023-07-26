@@ -1,0 +1,6 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#199690", // タイトルバーの背景色
+    "titleBar.activeForeground": "#ffffff", // タイトルバーの文字色
+  }
+}

@@ -21,6 +21,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+  has_many :posts, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :password,
@@ -41,4 +43,8 @@ class User < ApplicationRecord
   validates :username,
             uniqueness: true,
             presence: true
+
+  def owner?(object)
+    object.user_id == id
+  end
 end
