@@ -22,5 +22,28 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:comment) { FactoryBot.build(:comment) }
+  describe "通常時" do
+
+    it "commentが有効であること" do
+      expect(comment).to be_valid
+    end
+
+    it "bodyは必須なのでinvalidになること" do
+      comment.body = ""
+      expect(comment).to_not be_valid
+    end
+
+    it "bodyは1000文字以下であること" do
+      comment.body = "a" * 1000
+      expect(comment).to be_valid
+    end
+
+    it "bodyは1001文字以上は通らないこと" do
+      comment.body = "a" * 1001
+      expect(comment).to_not be_valid
+    end
+
+
+  end
 end
