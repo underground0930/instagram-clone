@@ -1,0 +1,22 @@
+<ul class="list-group list-group-light" style="max-height:450px; overflow-y:scroll;">
+  <% 3.times.each do %>
+    <li class="list-group-item d-flex mb-2">
+      <div class="d-flex align-items-center" style="width:100%;">
+        <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+          class="rounded-circle" />
+        <div class="ms-3" style="flex:1;">
+          <p class="fw-bold mb-1">John Doe</p>
+          <p class="text-muted mb-0" style="font-size:12px;">コメントコメント
+          コメントコメント
+          コメントコメントコメントコメントコメントコメントコメントコメントコメントコメント</p>
+          <p class="text-muted text-end mb-0" style="font-size:12px;">日時:<%= Date.current %></p>
+          <hr>
+          <div class="d-grid gap-2 d-md-block">
+            <a class="btn btn-primary" role="button" href="#">編集</a>
+            <a class="btn btn-danger" role="button" href="#">削除</a>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

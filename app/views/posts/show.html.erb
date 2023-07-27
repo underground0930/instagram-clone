@@ -17,17 +17,30 @@
         </div>
       </div>
       <div class="col col-4">
-          <p><%= @post.user.username %></p>
+          <ul class="list-group list-group-light">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+                  style="width: 45px; height: 45px" />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><%= @post.user.username %></p>
+                </div>
+              </div>
+            </li>
+          </ul>
           <hr class="hr">
           <% if current_user&.owner?(@post) %>
-            <p><%= link_to 'edit', edit_post_path(@post), { role: 'button', class: 'btn btn-info' } %></p>
-            <p><%= link_to 'delete', post_path(@post), {
-                     role: 'button',
-                     class: 'btn btn-danger',
-                     data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
-                   } %>
-            </p>
+            <div class="d-flex"> 
+              <p class="me-2"><%= link_to 'edit', edit_post_path(@post), { role: 'button', class: 'btn btn-info' } %></p>
+              <p><%= link_to 'delete', post_path(@post), {
+                      role: 'button',
+                      class: 'btn btn-danger',
+                      data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
+                    } %>
+              </p>
+            </div>
           <% end %>
+        <%= render "posts/comment" %>
       </div>
     </div>
     <div class="text-center my-5">
