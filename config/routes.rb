@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
 
   resources :posts do
-    resources :comments, module: :posts
+    resources :comments, module: :posts, except: [:index]
   end
 
 end

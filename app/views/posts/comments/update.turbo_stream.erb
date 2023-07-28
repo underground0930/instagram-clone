@@ -1,0 +1,10 @@
+<% if @comment.valid? %>
+  <%= turbo_stream.replace(@comment) %>
+<% else %>
+  <%= turbo_stream.replace(
+        dom_id(@comment, 'form'),
+        partial: 'form',
+        locals: { post: @comment.post, comment: @comment }
+      ) %>
+<% end %>
+

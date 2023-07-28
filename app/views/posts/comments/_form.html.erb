@@ -1,0 +1,12 @@
+<%= form_with(model: [post, comment], id: dom_id(comment, 'form'), class: 'row gy-2 gx-3 align-items-center') do |f| %>
+  <%= render 'shared/error_messages', object: comment %>
+  <div class="d-flex align-items-center gap-3">
+    <div class="form-outline">
+      <%= f.text_area :body, class: "form-control" %>
+      <%= f.label :body, class: "form-label" %>
+    </div>
+    <div>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
