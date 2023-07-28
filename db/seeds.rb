@@ -36,8 +36,9 @@ end
 
 puts "============== start seed [comment] =============="
 
-[user1,user2].each do |user| 
-  user.posts.each do |post|
-    post.comments.create(body: Faker::Lorem.sentence, user_id: user.id)
-  end
+
+Post.all.each do |post|
+  post.comments.create(body: Faker::Lorem.sentence, user_id: user1.id)
+  post.comments.create(body: Faker::Lorem.sentence, user_id: user2.id)
 end
+
