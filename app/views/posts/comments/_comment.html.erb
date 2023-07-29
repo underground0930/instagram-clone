@@ -2,7 +2,7 @@
   <li class="list-group-item d-flex mb-2">
     <div class="d-flex align-items-center" style="width:100%;">
       <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
-                style="width: 45px; height: 45px" />
+                style="width: 45px; height: 45px">
       <div class="ms-3" style="flex:1;">
         <p class="fw-bold mb-1"><%= comment.user.username %></p>
         <p class="text-muted mb-0" style="font-size:12px;"><%= simple_format(comment.body) %></p>
@@ -10,8 +10,8 @@
         <% if current_user && current_user.owner?(comment) %>
           <hr>
           <div class="d-grid gap-2 d-md-block" class="comment_buttons">
-            <%= link_to "編集", edit_post_comment_path(comment.post, comment), class: "btn btn-primary" %>
-            <%= link_to "削除", post_comment_path(comment.post, comment), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: '削除します' } %>
+            <%= link_to '編集', edit_post_comment_path(comment.post, comment), class: 'btn btn-primary' %>
+            <%= link_to '削除', post_comment_path(comment.post, comment), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: '削除します' } %>
           </div>
         <% end %>
       </div>
