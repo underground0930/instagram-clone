@@ -33,3 +33,12 @@ puts "============== start seed [posts] =============="
     puts "#{user.username}'s post has created"
   end
 end
+
+puts "============== start seed [comment] =============="
+
+
+Post.all.each do |post|
+  post.comments.create(body: Faker::Lorem.sentence, user_id: user1.id)
+  post.comments.create(body: Faker::Lorem.sentence, user_id: user2.id)
+end
+

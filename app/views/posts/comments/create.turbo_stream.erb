@@ -1,0 +1,9 @@
+<% if @comment.valid? %>
+  <%= turbo_stream.append "comments", @comment %>
+<% end %>
+
+<%= turbo_stream.replace(
+      'form_comment',
+      partial: 'form',
+      locals: { post: @comment.post, comment: @comment.valid? ? Comment.new : @comment }
+    ) %>

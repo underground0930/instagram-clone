@@ -18,7 +18,7 @@
 #
 FactoryBot.define do
   factory :post do
-    body { "MyText!" }
+    body { Faker::Lorem.sentence }
     association :user
     after(:build) do |post|
       post.images.attach(io: File.open('db/fixtures/dummy1.png'), filename: 'dummy1.png', content_type: 'image/png')
