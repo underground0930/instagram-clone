@@ -13,6 +13,9 @@
           <hr class="hr">
           <div class="p-3">
             <p><%= l @post.created_at %></p>
+              <p>
+                <%= render 'posts/likes/button', post: @post %>
+              </p>
           </div>
         </div>
       </div>
@@ -32,11 +35,11 @@
           <% if current_user&.owner?(@post) %>
             <div class="d-flex">
               <p class="me-2"><%= link_to 'edit', edit_post_path(@post), { role: 'button', class: 'btn btn-info' } %></p>
-              <p><%= link_to 'delete', post_path(@post), {
-                       role: 'button',
-                       class: 'btn btn-danger',
-                       data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
-                     } %>
+              <p class="me-4"><%= link_to 'delete', post_path(@post), {
+                                    role: 'button',
+                                    class: 'btn btn-danger',
+                                    data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
+                                  } %>
               </p>
             </div>
           <% end %>

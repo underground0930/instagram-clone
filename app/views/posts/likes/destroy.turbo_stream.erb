@@ -1,0 +1,6 @@
+<%= turbo_stream.replace(
+  dom_id(@post, 'like'),
+  partial: "button",
+  locals: {post: @post}
+)
+%>

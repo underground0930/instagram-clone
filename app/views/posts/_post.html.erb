@@ -7,10 +7,13 @@
     </div>
     <hr class="hr">
     <div class="p-3">
-      <%= post.body %>
+      <%= post.body.truncate(50) %>
     </div>
     <hr class="hr">
     <div class="p-3">
+      <p>
+        <%= render 'posts/likes/button', post: %>
+      </p>
       <p>
         <%= post.user.username %>
       </p>
