@@ -13,6 +13,9 @@
           <hr class="hr">
           <div class="p-3">
             <p><%= l @post.created_at %></p>
+              <p>
+                <%= render "posts/likes/button", post:@post %>
+              </p>
           </div>
         </div>
       </div>
@@ -37,9 +40,6 @@
                        class: 'btn btn-danger',
                        data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }
                      } %>
-              </p>
-              <p>
-                <%= render "posts/likes/button", post:@post %>
               </p>
             </div>
           <% end %>
