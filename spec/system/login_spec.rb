@@ -17,16 +17,18 @@ RSpec.describe "Logins", type: :system do
     context "失敗" do
       it "パスワードミスでログイン出来ない" do
         User.create(@user_attributes);
-        @user_attributes[:password] = "unknown"
-        log_in(@user_attributes)
+        visit login_path
+        fill_in "メールアドレス", with: @user_attributes[:email]
+        fill_in "パスワード", with: "unknown"
+        click_button "ログイン"
         expect(page).to have_content "ログインに失敗しました!"
       end
 
       it "登録されていないユーザーはログイン出来ない" do
-        log_in({
-          email: "unknown@example.com",
-          password: "unknown"
-        })
+        visit login_path
+        fill_in "メールアドレス", with: "unknown@example.com"
+        fill_in "パスワード", with: "unknown"
+        click_button "ログイン"
         expect(page).to have_content "ログインに失敗しました!"
       end
     end
