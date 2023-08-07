@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, module: :posts, except: [:index]
+    resources :like, module: :posts, only: [:create, :destroy]
   end
 
 end
