@@ -51,11 +51,11 @@ class User < ApplicationRecord
     object.user_id == id
   end
 
-  def like
+  def like(post)
     like_posts << post
   end
 
-  def unlike
+  def unlike(post)
     like_posts.destroy(post)
   end
 
