@@ -51,6 +51,8 @@ class User < ApplicationRecord
             uniqueness: true,
             presence: true
 
+  scope :recent, ->(count = 10) { order(created_at: :desc).limit(count) }
+
   def owner?(object)
     object.user_id == id
   end
