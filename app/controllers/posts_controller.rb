@@ -2,9 +2,7 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    # @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
-    # @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
-    @pagy, @posts = pagy(Post.with_attached_images.includes(:user).order(created_at: :desc), items: 15)
+    @pagy, @posts = pagy(Post.with_attached_images.includes(:user).order(created_at: :desc), items: 10)
   end
 
   def show
