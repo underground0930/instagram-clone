@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :guest_user_only, only: %i[new create]
 
+  def index
+    @pagy, @users = pagy(User.order(created_at: :desc), items: 10)
+  end
+
   def new
     @user = User.new
   end
