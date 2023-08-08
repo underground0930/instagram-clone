@@ -25,8 +25,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
-  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id'
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id'
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy,
+                                  inverse_of: :follower
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy,
+                                   inverse_of: :followed
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
