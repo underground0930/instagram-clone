@@ -1,0 +1,5 @@
+<%= turbo_stream.replace(
+  dom_id(@user, 'follow'),
+  partial: "followers",
+  locals: { user: @user }
+) %>
