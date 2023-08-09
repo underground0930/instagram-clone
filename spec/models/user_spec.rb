@@ -91,4 +91,10 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "フォロー機能" do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:user2) { FactoryBot.create(:user2) }
+
+  end
+
 end
