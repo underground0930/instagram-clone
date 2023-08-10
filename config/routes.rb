@@ -19,4 +19,8 @@ Rails.application.routes.draw do
     resource :like, module: :posts, only: [:create, :destroy]
   end
 
+  resources :users, only: [:index] do
+    resource :relationship, only: [:create, :destroy], module: :users
+  end
+
 end

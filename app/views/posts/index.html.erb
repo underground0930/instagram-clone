@@ -1,13 +1,23 @@
 <div id="posts" class="posts">
-  <div class="container">
-    <div class="row">
+  <div class="container d-flex">
+    <div class="col-8">
       <div class="d-flex justify-content-center mb-2">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
-      <%= render @posts %>
+      <div class="row">
+        <%= render @posts %>
+      </div>
       <div class="d-flex justify-content-center mb-2">
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
+    </div>
+    <div class="col-4 gap-1 mt-5">
+      <div class="mb-3">
+        <%= render User.recent(5) %>
+      </div>
+      <p class="d-flex justify-content-center">
+        <%= link_to 'more', users_path, class: 'btn btn-primary' %>
+      </p>
     </div>
   </div>
 </div>
