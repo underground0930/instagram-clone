@@ -91,6 +91,42 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "いいね機能" do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:post) { FactoryBot.create(:post, user:user) }
+
+    describe "#like" do
+      it "いいねしたらLikeが1件増えること" do
+        expect{
+          user.like(post)
+        }.to change(Like, :count).by 1  
+      end
+    end
+
+    describe "#unlike" do
+      before do
+        user.like(post)
+      end
+
+      it "いいねを解除したらLikeが1件減ること" do
+        expect{
+          user.unlike(post)
+        }.to change(Like, :count).by -1
+      end
+    end
+    
+    describe "like?" do
+      it "いいねしているのでtrueを返すこと" do
+        user.like(post)
+        expect(user.like?(post)).to be true
+      end
+      it "いいねしていないのでfalseを返すこと" do
+        expect(user.like?(post)).to be false
+      end
+    end
+
+  end
+
   describe "フォロー機能" do
     describe "#follow" do
       let!(:user) { FactoryBot.create(:user) }
@@ -159,6 +195,18 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "#recent" do
+      let(:base_time) { Time.current }
+      let!(:user) { FactoryBot.create(:user, created_at: base_time) }
+      let!(:user2) { FactoryBot.create(:user2, created_at: base_time.ago(1.day)) }  
+      let!(:user3) { FactoryBot.create(:user3, created_at: base_time.ago(2.day)) }  
+      let!(:user4) { FactoryBot.create(:user4, created_at: base_time.ago(3.day)) }  
+
+      it "最新順に3件並ぶこと" do
+        expect(User.recent(3)).to eq [user,user2,user3]
+      end
+
+    end
   end
 
 end
