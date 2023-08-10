@@ -16,4 +16,3 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, danger: t('controllers.application.not_authenticated.alert')
   end
 end
-

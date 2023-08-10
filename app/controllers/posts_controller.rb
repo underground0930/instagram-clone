@@ -3,10 +3,10 @@ class PostsController < ApplicationController
 
   def index
     @pagy, @posts = if logged_in?
-      pagy(current_user.feed.with_attached_images.includes(:user).order(created_at: :desc), items:10)
-    else
-      pagy(Post.with_attached_images.includes(:user).order(created_at: :desc), items:10)
-    end
+                      pagy(current_user.feed.with_attached_images.includes(:user).order(created_at: :desc), items: 10)
+                    else
+                      pagy(Post.with_attached_images.includes(:user).order(created_at: :desc), items: 10)
+                    end
   end
 
   def show
