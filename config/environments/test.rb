@@ -14,6 +14,8 @@ Rails.application.configure do
     Bullet.raise         = false # raise an error if n+1 query occurs
   end
 
+  config.active_job.queue_adapter = :test
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
