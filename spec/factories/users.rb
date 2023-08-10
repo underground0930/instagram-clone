@@ -38,8 +38,8 @@ FactoryBot.define do
     password_confirmation { "password" }
   end
   factory :user4, class: User do
-    username { "four"}
-    email { "four@example.com" }
+    username { "bagu"}
+    email { "bagu@example.com" }
     password { "password" }
     password_confirmation { "password" }
   end
