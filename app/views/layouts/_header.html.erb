@@ -4,10 +4,10 @@
   <!-- Navbar -->
   <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white">
     <!-- Container wrapper -->
-    <div class="container-fluid">
+    <div class="container-fluid" style="max-width:1080px;">
 
       <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
+      <ul class="navbar-nav ms-auto d-flex flex-row"">
         <% if logged_in? %>
           <li>
             <%= link_to '投稿', new_post_path, class: 'btn btn-success btn-lg' %>
@@ -31,6 +31,11 @@
             <%= link_to 'SignUp', :signup, class: 'nav-link' %>
           </li>
         <% end %>
+        <li class="input-group rounded">
+          <a role="button" class="input-group-text border-0" id="search-addon" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+            <i class="fas fa-search"></i>
+          </a>
+        </li>
       </ul>
     </div>
     <!-- Container wrapper -->
@@ -44,7 +49,7 @@
       <h6 class="mb-0">
         <a href="/" class="text-reset">Home</a>
         <span>/</span>
-        <a href="" class="text-reset">Analytics</a>
+        <a href="" class="text-reset">Test</a>
       </h6>
     </nav>
     <!-- Breadcrumb -->
@@ -52,3 +57,4 @@
   <!-- Heading -->
 </header>
 <!--Main Navigation-->
+
