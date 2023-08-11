@@ -7,18 +7,18 @@
         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for q || Post.ransack do |f| %>
           <div class="form-outline mb-4">
             <%= f.search_field :body_cont,  class:"form-control" %>
             <%= f.label :body_cont, "投稿の本文", class:"form-label" %>
           </div>
           <div class="form-outline mb-4">
-            <%= f.search_field :body_cont,  class:"form-control" %>
+            <%= f.search_field :comments_body_cont,  class:"form-control" %>
             <%= f.label :comments_body_cont, "コメント", class:"form-label" %>
           </div>
           <div class="form-outline mb-4">
-            <%= f.search_field :body_cont,  class:"form-control" %>
-            <%= f.label :users_name_cont, "ユーザー名", class:"form-label" %>
+            <%= f.search_field :user_username_cont,  class:"form-control" %>
+            <%= f.label :user_username_cont, "ユーザー名", class:"form-label" %>
           </div>
           <%= f.submit "検索", class: "btn btn-primary" %>
         <% end %>

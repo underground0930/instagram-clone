@@ -34,4 +34,13 @@ class Post < ApplicationRecord
   validates :images,
             presence: true,
             if: -> {  new_record? }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["body"]
+  end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["comments","user"]
+  end
+
 end

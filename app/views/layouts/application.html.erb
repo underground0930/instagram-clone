@@ -27,7 +27,7 @@
     <%= render 'shared/flash_messages' %>
     <%= render 'layouts/header' %>
     <%= yield %>
-    <%= render 'shared/search_modal' %>
+    <%= render 'shared/search_modal', q: @q %>
     <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
