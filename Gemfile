@@ -34,6 +34,8 @@ gem 'redis', '~> 4.0'
 
 gem 'sorcery'
 
+gem 'ransack'
+
 gem 'rails-i18n'
 
 gem 'activestorage-validator'
