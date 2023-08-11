@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">検索</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= search_form_for @q do |f| %>
+          <div class="form-outline mb-4">
+            <%= f.search_field :body_cont,  class:"form-control" %>
+            <%= f.label :body_cont, "投稿の本文", class:"form-label" %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= f.search_field :body_cont,  class:"form-control" %>
+            <%= f.label :comments_body_cont, "コメント", class:"form-label" %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= f.search_field :body_cont,  class:"form-control" %>
+            <%= f.label :users_name_cont, "ユーザー名", class:"form-label" %>
+          </div>
+          <%= f.submit "検索", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
