@@ -12,23 +12,27 @@
           <li>
             <%= link_to '投稿', new_post_path, class: 'btn btn-success btn-lg' %>
           </li>
-          <li class=" nav-item dropdown ">
-            <a class=" nav-link dropdown-toggle hidden-arrow d-flex align-items-center " href="
-            <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= current_user.username %> " class=" rounded-circle " alt=""
-                              style=" width: 30px
-              <li><%= link_to 'Logout', :logout, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: 'ログアウトしていいですか？' } %>>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= current_user.username %>" class="rounded-circle" alt=""
+                              style="width: 30px; height: 30px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><%= link_to 'Logout', :logout, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: 'ログアウトしていいですか？' } %></li>
             </ul>
           </li>
         <% else %>
-          <li class=" nav-item dropdown me-3 ">
+          <li class="nav-item dropdown me-3">
             <%= link_to 'Login', :login, class: 'nav-link' %>
           </li>
-          <li class=" nav-item dropdown ">
+          <li class="nav-item dropdown">
             <%= link_to 'SignUp', :signup, class: 'nav-link' %>
           </li>
         <% end %>
-        <li class=" input-group rounded ">
-          <a role=" button " class=" input-group-text border-0 " id=" search-addon " data-mdb-toggle=" modal " data-mdb-target="#exampleModal">
+        <li class="input-group rounded">
+          <a role="button" class="input-group-text border-0" id="search-addon" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
             <i class="fas fa-search"></i>
           </a>
         </li>
@@ -53,3 +57,4 @@
   <!-- Heading -->
 </header>
 <!--Main Navigation-->
+

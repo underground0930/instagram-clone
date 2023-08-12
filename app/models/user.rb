@@ -55,8 +55,8 @@ class User < ApplicationRecord
 
   scope :recent, ->(count = 10) { order(created_at: :desc).limit(count) }
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ['username']
+  def self.ransackable_attributes(auth_object = nil)
+    ["username"]
   end
 
   def owner?(object)
