@@ -5,7 +5,10 @@
         <%== pagy_bootstrap_nav(@pagy) %>
       </div>
       <div class="row">
-         <%= render @posts %>
+        <h1><%= @user.username %></h1>
+        <ul class="row">
+         <%= render partial: "posts/post_thumbnail", collection: @posts, as: :post %>        
+        </ul>
       </div>
       <div class="d-flex justify-content-center mb-2">
         <%== pagy_bootstrap_nav(@pagy) %>

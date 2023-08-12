@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[index new create]
+  skip_before_action :require_login, only: %i[index show new create]
   before_action :guest_user_only, only: %i[new create]
 
   def index
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @pagy, @posts = pagy(@user.posts.with_attached_images.includes(:user).order(created_at: :desc), items:10)
+    @pagy, @posts = pagy(@user.posts.with_attached_images.order(created_at: :desc), items:10)
   end
 
   def create

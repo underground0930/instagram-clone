@@ -4,7 +4,11 @@
       <img src="https://placehold.jp/40/3d4070/ffffff/150x150.png?text=<%= comment.user.username %>" class="rounded-circle" alt=""
                   style="width: 45px; height: 45px">
       <div class="ms-3" style="flex:1;">
-        <p class="fw-bold mb-1"><%= comment.user.username %></p>
+        <p class="fw-bold mb-1">
+          <%= link_to user_path(comment.user), data: { turbo: false } do %>
+            <%= comment.user.username %>
+          <% end %>
+        </p>
         <p class="text-muted mb-0" style="font-size:12px;"><%= simple_format(comment.body) %></p>
         <p class="text-muted text-end mb-0" style="font-size:12px;">日時:<%= comment.created_at %></p>
         <% if current_user && current_user.owner?(comment) %>
