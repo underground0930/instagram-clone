@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @pagy, @posts = pagy(@user.posts.with_attached_images.includes(:user).order(created_at: :desc), items:10)
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

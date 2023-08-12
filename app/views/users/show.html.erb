@@ -1,0 +1,15 @@
+<div id="user" class="user">
+  <div class="container d-flex">
+    <div class="col-12">
+      <div class="d-flex justify-content-center mb-2">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+      <div class="row">
+         <%= render @posts %>
+      </div>
+      <div class="d-flex justify-content-center mb-2">
+        <%== pagy_bootstrap_nav(@pagy) %>
+      </div>
+    </div>
+  </div>
+</div>
