@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @q = logged_in? ? current_user.feed.ransack(params[:q]) : Post.ransack(params[:q])
-    @pagy, @posts = pagy(@q.result(distinct: true).with_attached_images.includes(:user).order(created_at: :desc), items: 10)
+    @pagy, @posts = pagy(@q.result(distinct: true).with_attached_images.includes(:user).order(created_at: :desc),
+                         items: 10)
   end
 
   def show
