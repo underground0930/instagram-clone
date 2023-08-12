@@ -82,4 +82,85 @@ RSpec.describe "Posts", type: :system do
 
   end
 
+  describe "投稿の検索機能", js: true do
+
+    def search_posts(name, value)
+      find("#search-addon").click
+      fill_in name, with: value
+      find("#post_search input[type='submit']").click
+      expect(page).to have_no_selector('#exampleModal')
+    end
+
+    context "ログインしていない状態" do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:user2) { FactoryBot.create(:user2) }
+      let!(:post) { FactoryBot.create(:post, user:user, body: "投稿1です。") }
+      let!(:post2) { FactoryBot.create(:post, user:user2, body: "投稿2です。") }
+      let!(:comment) { post2.comments.create(body: "コメント1です。", user:user2) }
+        
+      before do
+        visit root_path
+      end
+
+      it "「投稿の本文」で検索が出来ること" do
+        search_posts("q[body_cont]", post.body);
+        targets = page.all(".post-child")
+        expect(targets.count).to eq 1
+        within targets[0] do
+          expect(page).to have_content(post.body)
+          expect(page).to have_link(href: "/posts/#{post.id}")
+        end
+      end
+
+      it "「コメント」で検索が出来ること" do
+        search_posts("q[comments_body_cont]", comment.body);
+        targets = page.all(".post-child")
+        expect(targets.count).to eq 1
+        within targets[0] do
+          expect(page).to have_content(post2.body)
+          expect(page).to have_link(href: "/posts/#{post2.id}")
+        end
+      end
+
+      it "「ユーザー」で検索が出来ること" do
+        search_posts("q[user_username_cont]", user2.username);
+        targets = page.all(".post-child")
+        expect(targets.count).to eq 1
+        within targets[0] do
+          expect(page).to have_content(post2.body)
+          expect(page).to have_link(href: "/posts/#{post2.id}")
+        end
+      end
+    end
+
+    context "ログインしている状態" do
+      let!(:user) { FactoryBot.create(:user) }
+      let!(:user2) { FactoryBot.create(:user2) }
+      let!(:post) { FactoryBot.create(:post, user:user, body: "投稿1です。") }
+      let!(:post2) { FactoryBot.create(:post, user:user2, body: "投稿2です。") }
+
+      before do
+        @user_attributes = FactoryBot.attributes_for(:user)
+        log_in(@user_attributes)
+        visit root_path
+      end
+
+      it "「投稿の本文」で自分の投稿の検索が出来ること" do
+        search_posts("q[body_cont]", post.body);
+        targets = page.all(".post-child")
+        expect(targets.count).to eq 1
+        within targets[0] do
+          expect(page).to have_content(post.body)
+          expect(page).to have_link(href: "/posts/#{post.id}")
+        end
+      end
+
+      it "「投稿の本文」で他人の投稿はヒットしないこと" do
+        search_posts("q[body_cont]", post2.body);
+        targets = page.all(".post-child")
+        expect(targets.count).to eq 0
+      end
+    end
+  end
+
 end
