@@ -3,7 +3,9 @@
     <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= user.username %>" alt="" style="width: 45px; height: 45px"
       class="rounded-circle">
     <div class="ms-3">
-      <p class="fw-bold mb-1"><%= user.username %></p>
+      <p class="fw-bold mb-1">
+        <%= link_to user.username, user %>
+      </p>
     </div>
   </div>
   <% if logged_in? %>
