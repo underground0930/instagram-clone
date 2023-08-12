@@ -21,14 +21,18 @@ user2 = FactoryBot.create(:user,
   email: "jiro@example.com",
 )
 
+user3 = FactoryBot.create(:user, 
+  username: "saro",
+  email: "saro@example.com",
+)
+
 puts "============== start seed [posts] =============="
 
-[user1,user2].each do |user|
-  10.times.each do
+[user1,user2,user3].each do |user|
+  7.times.each do
     post = user.posts.build(body: Faker::Hacker.say_something_smart)
     post.images.attach(io: File.open("db/fixtures/dummy1.png"), filename: "dummy")
     post.images.attach(io: File.open("db/fixtures/dummy2.png"), filename: "dummy")
-    post.images.attach(io: File.open("db/fixtures/dummy3.png"), filename: "dummy")
     post.save
     puts "#{user.username}'s post has created"
   end
@@ -40,5 +44,6 @@ puts "============== start seed [comment] =============="
 Post.all.each do |post|
   post.comments.create(body: Faker::Lorem.sentence, user_id: user1.id)
   post.comments.create(body: Faker::Lorem.sentence, user_id: user2.id)
+  post.comments.create(body: Faker::Lorem.sentence, user_id: user3.id)
 end
 
