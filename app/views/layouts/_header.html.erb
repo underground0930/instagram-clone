@@ -5,17 +5,15 @@
   <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white">
     <!-- Container wrapper -->
     <div class="container-fluid" style="max-width:1080px;">
-
       <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row"">
+      <ul class="navbar-nav ms-auto d-flex flex-row">
         <% if logged_in? %>
           <li>
             <%= link_to '投稿', new_post_path, class: 'btn btn-success btn-lg' %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= current_user.username %>" class="rounded-circle" alt=""
-                              style="width: 30px; height: 30px">
+            <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= current_user.username %>" class="rounded-circle" alt="" style="width: 30px; height: 30px">
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item" href="#">My profile</a></li>
@@ -57,4 +55,3 @@
   <!-- Heading -->
 </header>
 <!--Main Navigation-->
-
