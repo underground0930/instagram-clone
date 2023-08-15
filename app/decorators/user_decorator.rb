@@ -1,13 +1,18 @@
-class UserDecorator < Draper::Decorator
+class UserDecorator < ApplicationDecorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
+  def avatar_url(size = :origin)
+    return "https://placehold.jp/55/3d4070/ffffff/150x150.png?text=#{avatar.username}" unless avatar.present?
+    command = case size
+              when :thumb
+                { resize_to_fill: [48, 48] }
+              when :lg
+                { resize_to_fill: [100, 100] }
+              else
+                false
+              end
+    image = command ? avatar.variant(command).processed : avatar
+    h.rails_storage_proxy_url(image, only_path: true)
+  end
 
 end

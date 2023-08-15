@@ -1,3 +1,3 @@
 <% if user %>
-  <%= image_tag (user.avatar.present? ? user.avatar : "https://placehold.jp/55/3d4070/ffffff/150x150.png?text=#{user.username}"), alt:"", style:"width: 45px; height: 45px", class:"rounded-circle" %>
+  <%= image_tag user.decorate.avatar_url(:thumb), alt:"", style:"width: 45px; height: 45px", class:"rounded-circle" %>
 <% end %>
