@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(create_user_params)
     if @user.save
       redirect_to root_path, success: t('controllers.users.create.success')
     else
@@ -24,9 +24,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    if current_user.update(update_user_params)
+      redirect_to user_path(current_user), success: t('controllers.users.update.success')
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
-  def user_params
+  def create_user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def update_user_params
+    if params[:user][:avatar].blank?
+      params.require(:user).permit(:username, :email)
+    else
+      params.require(:user).permit(:username, :email, :avatar)
+    end
   end
 end

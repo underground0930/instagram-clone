@@ -14,6 +14,7 @@ ja:
         password_confirmation: パスワード確認
         created_at: 登録日時
         updated_at: 更新日時
+        avatar: "アバター画像"
       post:
         body: 本文
         images: 写真
@@ -26,6 +27,8 @@ ja:
     users:
       create:
         success: 'ユーザー登録が完了しました'
+      update:
+        success: "ユーザー情報の更新をしました"
     user_sessions:
       create:
         success: "ログインに成功しました!"
