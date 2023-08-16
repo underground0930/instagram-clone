@@ -5,7 +5,6 @@ class UserDecorator < ApplicationDecorator
     # rubocop:disable all
     return "https://placehold.jp/55/3d4070/ffffff/150x150.png?text=#{avatar.username}" unless avatar.present?
     # rubocop:enable all
-
     command = case size
               when :thumb
                 { resize_to_fill: [48, 48] }
