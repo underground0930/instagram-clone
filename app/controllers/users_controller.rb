@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :guest_user_only, only: %i[new create]
 
   def index
-    @pagy, @users = pagy(User.includes(avatar_attachment: { blob: :variant_records }).order(created_at: :desc), items: 5)
+    @pagy, @users = pagy(User.includes(avatar_attachment: { blob: :variant_records }).order(created_at: :desc),
+                         items: 5)
   end
 
   def show
@@ -15,6 +16,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = current_user
+  end
+
   def create
     @user = User.new(create_user_params)
     if @user.save
@@ -24,13 +29,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = current_user
-  end
-
   def update
     if current_user.update(update_user_params)
-      redirect_to user_path(current_user), success: t('controllers.users.update.success')
+      redirect_to '/mypage/account/edit', success: t('controllers.users.update.success')
     else
       render :edit, status: :unprocessable_entity
     end

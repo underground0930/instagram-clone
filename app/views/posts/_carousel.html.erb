@@ -1,7 +1,7 @@
 <% carousel_id = dom_id(post, 'carouselExampleIndicators') %>
 <div id="<%= carousel_id %>" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-indicators">
-    <% post.images.each_with_index do |image, index| %>
+    <% post.images.includes(:blob).each_with_index do |image, index| %>
       <button
         type="button"
         data-mdb-target="#<%= carousel_id %>"
@@ -12,7 +12,7 @@
     <% end %>
   </div>
   <div class="carousel-inner">
-    <% post.images.each_with_index do |image, index| %>
+    <% post.images.includes(:blob).each_with_index do |image, index| %>
       <div class="carousel-item<%= ' active' if index.zero? %>">
         <%= image_tag image, class: 'd-block w-100' %>
       </div>

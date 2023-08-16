@@ -56,13 +56,11 @@ class User < ApplicationRecord
             presence: true
 
   validates :avatar,
-              blob: {
-                content_type: ['image/png', 'image/jpg', 'image/jpeg'],
-                size_range: 1..(5.megabytes)
-              },
-              presence: true,
-              if: -> { new_record? }
-    
+            blob: {
+              content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+              size_range: 1..(5.megabytes)
+            }
+
   scope :recent, ->(count = 10) { order(created_at: :desc).limit(count) }
 
   def self.ransackable_attributes(_auth_object = nil)
