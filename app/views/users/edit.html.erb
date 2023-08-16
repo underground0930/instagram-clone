@@ -1,0 +1,32 @@
+<div id="user-edit" class="user-edit">
+  <%= render 'shared/error_messages', object: @user %>
+  <h1 class="user-edit__title">ユーザー情報編集</h1>
+    <div class="user-edit__inner">
+    <%= form_with model: @user, url: user_path(@user) do |f| %>
+      <div class="form-outline">
+        <%= f.text_field :username, class: 'form-control' %>
+        <%= f.label :username, User.human_attribute_name(:username), class: 'form-label' %>
+      </div>
+      <br>
+      <div class="form-outline">
+        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.label :email, User.human_attribute_name(:email), class: 'form-label' %>
+      </div>
+      <br>
+      <% if @user.avatar.persisted? %>
+        <div class="d-flex row">
+          <div class="col col-3">
+            <%= image_tag @user.avatar, class: 'w-100' %>
+          </div>
+        </div>
+        <br>
+      <% end %>
+      <div>
+        <%= f.label :avatar, User.human_attribute_name(:avatar), class: 'form-label' %>
+        <%= f.file_field :avatar, class: 'form-control', include_hidden: false, multiple: false, accept: 'image/*' %>
+      </div>
+      <br>
+      <%= f.submit '編集', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

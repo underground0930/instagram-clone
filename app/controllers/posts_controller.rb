@@ -3,13 +3,16 @@ class PostsController < ApplicationController
 
   def index
     @q = logged_in? ? current_user.feed.ransack(params[:q]) : Post.ransack(params[:q])
-    @pagy, @posts = pagy(@q.result(distinct: true).with_attached_images.includes(:user).order(created_at: :desc),
+    @users = User.with_attached_avatar.recent(5)
+    @pagy, @posts = pagy(@q.result(distinct: true)
+                        .with_attached_images.includes(user: { avatar_attachment: :blob })
+                        .order(created_at: :desc),
                          items: 10)
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments
+    @comments = @post.comments.includes(user: { avatar_attachment: { blob: :variant_records } })
     @comment = Comment.new
   end
 

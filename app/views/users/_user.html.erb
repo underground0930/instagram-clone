@@ -1,7 +1,6 @@
 <li class="list-group-item d-flex justify-content-between align-items-center">
   <div class="d-flex align-items-center">
-    <img src="https://placehold.jp/55/3d4070/ffffff/150x150.png?text=<%= user.username %>" alt="" style="width: 45px; height: 45px"
-      class="rounded-circle">
+    <%= render 'users/avatar', user: %>
     <div class="ms-3">
       <p class="fw-bold mb-1">
         <%= link_to user.username, user %>

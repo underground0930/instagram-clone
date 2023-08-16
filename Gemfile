@@ -42,6 +42,8 @@ gem 'activestorage-validator'
 
 gem 'pagy', '~> 6.0'
 
+gem 'draper'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

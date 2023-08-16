@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_one_attached :avatar
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :password,
@@ -52,6 +54,12 @@ class User < ApplicationRecord
   validates :username,
             uniqueness: true,
             presence: true
+
+  validates :avatar,
+            blob: {
+              content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+              size_range: 1..(5.megabytes)
+            }
 
   scope :recent, ->(count = 10) { order(created_at: :desc).limit(count) }
 

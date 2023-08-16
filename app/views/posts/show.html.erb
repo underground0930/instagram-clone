@@ -23,8 +23,7 @@
           <ul class="list-group list-group-light">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div class="d-flex align-items-center">
-                <img src="https://placehold.jp/40/3d4070/ffffff/150x150.png?text=<%= @post.user.username %>" class="rounded-circle" alt=""
-                  style="width: 45px; height: 45px">
+                <%= render 'users/avatar', user: @post.user %>
                 <div class="ms-3">
                   <p class="fw-bold mb-1">
                     <%= link_to @post.user, data: { turbo: false } do %>
