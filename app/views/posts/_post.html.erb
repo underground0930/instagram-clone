@@ -15,6 +15,7 @@
         <%= render 'posts/likes/button', post: %>
       </p>
       <p>
+        <%= render "users/avatar", user:post.user %>
         <%= post.user.username %>
       </p>
       <p>
