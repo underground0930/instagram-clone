@@ -2,7 +2,9 @@ class UserDecorator < ApplicationDecorator
   delegate_all
 
   def avatar_url(size = :origin)
+    # rubocop:disable all
     return "https://placehold.jp/55/3d4070/ffffff/150x150.png?text=#{avatar.username}" unless avatar.present?
+    # rubocop:enable all
 
     command = case size
               when :thumb
