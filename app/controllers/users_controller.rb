@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :guest_user_only, only: %i[new create]
 
   def index
-    @pagy, @users = pagy(User.order(created_at: :desc), items: 5)
+    @pagy, @users = pagy(User.includes(avatar_attachment: { blob: :variant_records }).order(created_at: :desc), items: 5)
   end
 
   def show
