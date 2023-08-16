@@ -23,7 +23,11 @@ jobs:
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
           echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | tee /etc/apt/sources.list.d/google-chrome.list
           apt update -y
-          apt install -y google-chrome-stable=114.0.5735.133-1 imagemagick
+          wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/114.0.5735.133/linux64/chrome-linux64.zip
+          unzip chrome-linux64.zip
+          sudo mv chrome-linux64/chrome /usr/bin/
+          sudo chmod +x /usr/bin/chrome
+          apt install -y imagemagick
       - name: bundler config
         run: bundle config set path 'vendor/bundle'
       - name: cache gems
