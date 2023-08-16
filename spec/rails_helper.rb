@@ -67,5 +67,3 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
 end
-
-Webdrivers::Chromedriver.required_version = '114.0.5735.90' 
