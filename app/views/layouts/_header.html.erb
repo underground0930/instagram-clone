@@ -13,10 +13,10 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <%= render 'users/avatar', user:current_user %>
+              <%= render 'users/avatar', user: current_user %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><%= link_to "My profile", mypage_account_edit_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'My profile', mypage_account_edit_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Logout', :logout, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: 'ログアウトしていいですか？' } %></li>
             </ul>
           </li>

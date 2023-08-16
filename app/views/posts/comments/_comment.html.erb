@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id comment do %>
   <li class="list-group-item d-flex mb-2">
     <div class="d-flex align-items-center" style="width:100%;">
-      <%= render "users/avatar", user:comment.user %>
+      <%= render 'users/avatar', user: comment.user %>
       <div class="ms-3" style="flex:1;">
         <p class="fw-bold mb-1">
           <%= link_to user_path(comment.user), data: { turbo: false } do %>
