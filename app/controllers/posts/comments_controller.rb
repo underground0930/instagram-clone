@@ -12,6 +12,8 @@ class Posts::CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save
+    # 自分の投稿にコメントがあったとき
+    # xxxさんがあなたの投稿にコメントしました
   end
 
   def update
