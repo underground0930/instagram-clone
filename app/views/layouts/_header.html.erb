@@ -6,7 +6,7 @@
     <!-- Container wrapper -->
     <div class="container-fluid" style="max-width:1080px;">
       <!-- Right links -->
-      <ul class="navbar-nav ms-auto d-flex flex-row">
+      <ul class="navbar-nav ms-auto d-flex align-items-center flex-row">
         <% if logged_in? %>
           <li>
             <%= link_to '投稿', new_post_path, class: 'btn btn-success btn-lg' %>
@@ -19,6 +19,12 @@
               <li><%= link_to 'My profile', mypage_account_edit_path, class: 'dropdown-item' %></li>
               <li><%= link_to 'Logout', :logout, class: 'dropdown-item', data: { turbo_method: :delete, turbo_confirm: 'ログアウトしていいですか？' } %></li>
             </ul>
+          </li>
+          <li class="nav-item input-group">
+            <a href="#">
+              <i class="fas fa-bell"></i>
+              <span class="badge rounded-pill badge-notification bg-danger">11</span>
+            </a>
           </li>
         <% else %>
           <li class="nav-item dropdown me-3">
