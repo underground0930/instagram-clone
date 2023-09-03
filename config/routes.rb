@@ -25,4 +25,8 @@ Rails.application.routes.draw do
     resource :relationship, only: [:create, :destroy], module: :users
   end
 
+  resources :notifications, only: [:index] do
+    resource :read, only: %i[create], module: :notifications
+  end
+
 end
